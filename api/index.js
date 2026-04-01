@@ -24,6 +24,10 @@ module.exports = async (req, res) => {
     }).catch(() => {});
 
     res.setHeader("Content-Type", "text/html");
+
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    
     return res.status(200).send(`<!DOCTYPE html>
 <html lang="en">
 <head>
