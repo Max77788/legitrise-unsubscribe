@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   }
 
   // POST /unsubscribe
-  if (pathname === "/unsubscribe" && (req.method === "POST" || req.method === "GET") {
+  if (pathname === "/unsubscribe" && (req.method === "POST" || req.method === "GET")) {
     const queryParams = Object.fromEntries(
       new URL(req.url, `https://${req.headers.host}`).searchParams.entries()
     );
