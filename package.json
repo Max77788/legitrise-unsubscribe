@@ -1,0 +1,6 @@
+{
+  "name": "mom-ai-api",
+  "version": "1.0.0",
+  "description": "MOM AI Technologies - Unsubscribe API",
+  "engines": { "node": ">=18" }
+}
