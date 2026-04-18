@@ -1,3 +1,6 @@
+const https = require("https");
+const agent = new https.Agent({ rejectUnauthorized: false });
+
 const WEBHOOK_URL = "https://n8n.legitrise.com/webhook/unsub-email";
 
 module.exports = async (req, res) => {
@@ -23,7 +26,8 @@ module.exports = async (req, res) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-    }).catch(() => {});
+      agent, // 👈 add this
+  }).catch(() => {});
 
     res.setHeader("Content-Type", "text/html");
 
