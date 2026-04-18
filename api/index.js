@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
 
     console.log("Started Unsubscribe process")
 
-    const payload = { ...req.body, ...queryParams };
+    const payload = { ...(req.body || {}), ...queryParams };
 
     /*
     // Fire-and-forget — don't await
