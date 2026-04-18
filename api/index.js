@@ -1,4 +1,9 @@
 const https = require("https");
+const axios = require("axios");
+
+const axiosInstance = axios.create({
+  httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+});
 const agent = new https.Agent({ rejectUnauthorized: false });
 
 const WEBHOOK_URL = "https://n8n.legitrise.com/webhook/unsub-email";
@@ -21,6 +26,7 @@ module.exports = async (req, res) => {
 
     const payload = { ...req.body, ...queryParams };
 
+    /*
     // Fire-and-forget — don't await
     fetch(WEBHOOK_URL, {
       method: "POST",
@@ -28,6 +34,9 @@ module.exports = async (req, res) => {
       body: JSON.stringify(payload),
       agent, // 👈 add this
   }).catch(() => {});
+    */
+
+    axiosInstance.post(WEBHOOK_URL, payload).catch(() => {});
 
     res.setHeader("Content-Type", "text/html");
 
