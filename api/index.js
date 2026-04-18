@@ -36,7 +36,9 @@ module.exports = async (req, res) => {
   }).catch(() => {});
     */
 
-    axiosInstance.post(WEBHOOK_URL, payload).catch(() => {});
+    axiosInstance.post(WEBHOOK_URL, payload).catch((err) => {
+  console.error("Webhook failed:", err.message);
+});
 
     res.setHeader("Content-Type", "text/html");
 
