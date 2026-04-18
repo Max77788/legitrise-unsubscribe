@@ -14,6 +14,8 @@ module.exports = async (req, res) => {
       new URL(req.url, `https://${req.headers.host}`).searchParams.entries()
     );
 
+    console.log("Started Unsubscribe process")
+
     const payload = { ...req.body, ...queryParams };
 
     // Fire-and-forget — don't await
