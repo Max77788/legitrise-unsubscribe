@@ -16,6 +16,11 @@ module.exports = async (req, res) => {
     return res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
   }
 
+  // GET /
+  if (pathname === "/" && req.method === "GET") {
+    return res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+  }
+
   // POST /unsubscribe
   if (pathname === "/unsubscribe" && (req.method === "POST" || req.method === "GET")) {
     const queryParams = Object.fromEntries(
